@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wanderiq.web.id/sitemap.xml
