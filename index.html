@@ -6,13 +6,13 @@
 <meta name="format-detection" content="telephone=no">
 <title>WanderIQ_Hub</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="WanderIQ_Hub: satu pintu untuk empat solusi web. Estimasi perjalanan (Trip), aplikasi untuk UMKM, simulasi edukasi Teknik Energi (Teknergi) dan Teknik Tenaga Listrik (Volta-Z).">
+<meta name="description" content="WanderIQ_Hub: satu pintu untuk empat solusi web. Estimasi biaya perjalanan (Trip), menu dan pemesanan online untuk UMKM, simulasi edukasi Teknik Energi (Teknergi) dan Teknik Tenaga Listrik (Volta-Z).">
 <link rel="canonical" href="https://wanderiq.web.id/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WanderIQ_Hub">
 <meta property="og:title" content="WanderIQ_Hub – Satu pintu, empat solusi">
-<meta property="og:description" content="Estimasi perjalanan, aplikasi UMKM, serta simulasi edukasi Teknik Energi dan Teknik Tenaga Listrik.">
+<meta property="og:description" content="Estimasi biaya perjalanan, menu dan pemesanan UMKM, serta simulasi edukasi Teknik Energi dan Teknik Tenaga Listrik.">
 <meta property="og:url" content="https://wanderiq.web.id/">
 <meta property="og:image" content="https://listrik-budget.pages.dev/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -29,10 +29,10 @@
 {"@type":"ListItem","position":2,"url":"https://umkm.wanderiq.web.id/","name":"WanderIQ UMKM"},
 {"@type":"ListItem","position":3,"url":"https://teknergi.wanderiq.web.id/","name":"Teknergi"},
 {"@type":"ListItem","position":4,"url":"https://voltaz.wanderiq.web.id/","name":"Volta-Z"}]},
-{"@type":"SoftwareApplication","name":"Volta-Z","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://voltaz.wanderiq.web.id/","description":"Aplikasi belajar untuk menghitung biaya listrik rumah dan industri, menelusuri kebutuhan energi dan alur bisnis kelistrikan.","offers":{"@type":"Offer","price":"89000","priceCurrency":"IDR"},"publisher":{"@type":"Organization","name":"WanderIQ_Hub"}}
+{"@type":"SoftwareApplication","name":"Volta-Z","applicationCategory":"EducationalApplication","operatingSystem":"Web","url":"https://voltaz.wanderiq.web.id/","description":"Simulasi industri kelistrikan: hitung biaya listrik, telusuri kebutuhan energi, dan alur bisnis.","publisher":{"@type":"Organization","name":"WanderIQ_Hub"}}
 ]}</script>
 <style>
-/* Layout: sticky bar → hub hero (headline + live hub diagram) → audience filter + 2×2 solution grid → contact band → footer */
+/* Layout: sticky bar → hub hero (headline + live hub diagram) → audience filter + 4-up compact solution grid → footer */
 :root{
   color-scheme:dark;
   --ink:#071a33;          /* page ground, deep navy from the old site */
@@ -97,8 +97,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s}
 .btn.pri{background:linear-gradient(135deg,#ffdc73,#f0b52a);color:#2a2000;box-shadow:0 10px 28px -10px rgba(255,201,51,.7)}
 .btn.pri:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(255,201,51,.85)}
-.btn.sec{border:1px solid var(--line);background:rgba(255,255,255,.04)}
-.btn.sec:hover{background:rgba(255,255,255,.09)}
 .btn svg{width:18px;height:18px}
 .doms{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:28px;font-family:var(--f-mono);font-size:12.5px;color:var(--dim)}
 .doms a{display:inline-flex;align-items:center;gap:7px}
@@ -135,31 +133,32 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 
 @media(max-width:860px){
   .hero .wrap{grid-template-columns:1fr;padding-block:40px 24px;gap:28px}
-  .hub{max-width:400px}
+  .hub{max-width:340px}
 }
 
 /* ---------- Solutions ---------- */
-.sol .wrap{padding-block:48px 24px}
-.sec-h{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px 32px;margin-bottom:22px}
-.sec-h h2{font-family:var(--f-display);font-weight:700;font-size:clamp(24px,3.2vw,36px);letter-spacing:-.03em;line-height:1.1;margin:0;text-wrap:balance}
-.sec-h p{margin:8px 0 0;color:var(--mute);max-width:48ch}
-.who{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:22px}
-.who > span{font-size:13px;color:var(--dim);margin-right:4px;font-weight:600;letter-spacing:.02em}
-.chip{font:600 13.5px var(--f-body);color:var(--mute);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,color .2s,border-color .2s}
-.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.sol .wrap{padding-block:40px 56px}
+.sec-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-bottom:22px}
+.sec-h h2{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,2.8vw,32px);letter-spacing:-.03em;line-height:1.1;margin:0;text-wrap:balance}
+.who{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.who > span{font-size:13px;color:var(--dim);margin-right:2px;font-weight:600}
+.chip{font:600 13px var(--f-body);color:var(--mute);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:background .2s,color .2s,border-color .2s}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c)}
 .chip:hover{color:var(--fg);background:rgba(255,255,255,.08)}
 .chip[aria-pressed="true"]{color:#081a30;background:var(--c);border-color:var(--c)}
 .chip[aria-pressed="true"]::before{background:#081a30}
 
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.card{--mx:50%;--my:0%;position:relative;display:flex;flex-direction:column;gap:14px;padding:26px;border-radius:var(--r);
-  background:linear-gradient(165deg,rgba(28,70,120,.5),rgba(10,30,60,.82));border:1px solid var(--line);overflow:hidden;isolation:isolate;
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media(max-width:1080px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.grid{grid-template-columns:1fr;gap:12px}.card{padding:16px 16px 14px;gap:8px}.card .for{display:none}.ds{font-size:13.5px}.c-foot{padding-top:10px}}
+.card{--mx:50%;--my:0%;position:relative;display:flex;flex-direction:column;gap:10px;padding:20px;border-radius:18px;
+  background:linear-gradient(165deg,rgba(28,70,120,.45),rgba(10,30,60,.8));border:1px solid var(--line);overflow:hidden;isolation:isolate;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,opacity .35s,filter .35s;
   animation:rise .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*90ms)}
 .card::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .35s;
-  background:radial-gradient(420px circle at var(--mx) var(--my),color-mix(in srgb,var(--c) 26%,transparent),transparent 60%)}
-.card::after{content:"";position:absolute;left:26px;right:26px;top:0;height:2px;border-radius:2px;background:var(--c);opacity:.7}
+  background:radial-gradient(320px circle at var(--mx) var(--my),color-mix(in srgb,var(--c) 24%,transparent),transparent 60%)}
+.card::after{content:"";position:absolute;left:20px;right:20px;top:0;height:2px;border-radius:2px;background:var(--c);opacity:.7}
 .card:hover,.card:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--c) 55%,transparent)}
 .card:hover::before,.card:focus-visible::before{opacity:1}
 .grid.filtered .card:not(.match){opacity:.35;filter:saturate(.3)}
@@ -167,47 +166,32 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .grid.filtered .card.match::before{opacity:1}
 @keyframes rise{from{transform:translateY(14px)}to{transform:none}}
 
-.c-top{display:flex;align-items:center;gap:14px}
-.ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;flex:none;
+.c-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.ic{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;flex:none;
   background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
-.ic svg{width:28px;height:28px;stroke:var(--c);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.card:hover .ic svg .blades{animation:spin 1.6s linear infinite}
+.ic svg{width:22px;height:22px;stroke:var(--c);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ic svg .blades{transform-box:view-box;transform-origin:12px 9px}
-.tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
-.nm{font-family:var(--f-display);font-weight:700;font-size:23px;letter-spacing:-.025em;line-height:1.15;margin:2px 0 0}
-.badge{margin-left:auto;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.03em;padding:4px 10px;border-radius:999px;
+.card:hover .ic svg .blades{animation:spin 1.6s linear infinite}
+.tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--c)}
+.nm{font-family:var(--f-display);font-weight:700;font-size:19px;letter-spacing:-.025em;line-height:1.2;margin:3px 0 0}
+.badge{font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:999px;
   color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent)}
-.ds{margin:0;color:#bccde3;font-size:15px;max-width:56ch}
-.uses{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
-.uses li{font-size:12.5px;color:var(--mute);padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.05)}
-.for{margin:0;font-size:13px;color:var(--dim)}
-.for b{color:var(--mute);font-weight:600}
-.c-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.price b{display:block;font-family:var(--f-display);font-size:17px;font-weight:700;letter-spacing:-.02em}
-.price small{display:block;font-size:12px;color:var(--dim)}
-.sts{display:flex;gap:12px;font-size:12.5px;color:var(--mute);font-variant-numeric:tabular-nums}
-.sts span{display:inline-flex;align-items:center;gap:5px}
-.sts svg{width:13px;height:13px}
+.ds{margin:0;color:#bccde3;font-size:14px;line-height:1.5}
+.uses{display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
+.uses li{font-size:11.5px;color:var(--mute);padding:3px 8px;border-radius:7px;background:rgba(255,255,255,.05)}
+.for{margin:0;font-size:12.5px;color:var(--dim)}
+.c-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sts{display:flex;gap:10px;margin:0;font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.sts span{display:inline-flex;align-items:center;gap:4px}
+.sts svg{width:12px;height:12px}
 .sts[hidden]{display:none}
-.go{margin-left:auto;display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12.5px;color:var(--mute)}
-.go i{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--c);color:#081a30;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
-.go i svg{width:18px;height:18px}
-.card:hover .go i{transform:translateX(4px) rotate(-45deg)}
+.go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:11.5px;color:var(--mute);min-width:0}
+.go i{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:none;background:var(--c);color:#081a30;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.go i svg{width:16px;height:16px}
+.card:hover .go i{transform:translateX(3px) rotate(-45deg)}
 .card:hover .go{color:var(--fg)}
 
-/* ---------- Contact band ---------- */
-.band .wrap{padding-block:48px 40px}
-.band-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px;border-radius:var(--r);
-  border:1px dashed rgba(160,200,255,.25);background:rgba(255,255,255,.025)}
-.band-in svg.fig{width:84px;height:90px}
-.band h3{font-family:var(--f-display);font-weight:700;font-size:21px;letter-spacing:-.02em;margin:0;text-wrap:balance}
-.band p{margin:6px 0 0;color:var(--mute);font-size:14.5px}
-.band .acts{margin:0}
-.btn.wa{background:#25d366;color:#04200f}
-.btn.wa:hover{transform:translateY(-2px)}
-@media(max-width:820px){.band-in{grid-template-columns:1fr;padding:24px}.band-in svg.fig{display:none}}
 
-/* ---------- Footer ---------- */
 .ft .wrap{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;padding-block:22px 28px;font-size:12px;color:var(--dim);border-top:1px solid var(--line)}
 .ft a:hover{color:var(--brick)}
 
@@ -228,7 +212,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
     <nav class="nav" aria-label="Utama">
       <a href="#solusi">Solusi</a>
       <a href="#untuk">Untuk siapa</a>
-      <a href="#kontak">Kontak</a>
     </nav>
     <a class="cta" href="#solusi">Lihat solusi</a>
   </div>
@@ -245,11 +228,10 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <span style="color:var(--c-tek)">teknik energi.</span>
         <span style="color:var(--c-volt)">kelistrikan.</span>
       </span></h1>
-      <p class="lead">WanderIQ_Hub mengumpulkan aplikasi web untuk <b>merencanakan perjalanan</b>, <b>mengelola usaha</b>, dan <b>belajar lewat simulasi</b> industri energi dan kelistrikan. Pilih solusi, langsung buka di browser.</p>
+      <p class="lead">WanderIQ_Hub menyediakan solusi aplikasi web untuk <b>merencanakan perjalanan</b>, <b>mengelola usaha</b> dan <b>belajar melalui simulasi</b>.</p>
       <div class="acts">
         <a class="btn pri" href="#solusi">Jelajahi 4 solusi
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-        <a class="btn sec" href="#untuk">Saya mahasiswa teknik</a>
       </div>
       <div class="doms" aria-label="Alamat subdomain">
         <a href="https://trip.wanderiq.web.id" style="--c:var(--c-trip)">trip.</a>
@@ -298,12 +280,12 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <a class="node" data-k="trip" href="https://trip.wanderiq.web.id" style="--c:var(--c-trip)">
           <circle class="halo" cx="100" cy="100" r="44"/><circle class="bg" cx="100" cy="100" r="44"/>
           <g class="ico" transform="translate(84 84) scale(1.35)"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></g>
-          <text x="100" y="166">Trip</text><text class="sub" x="100" y="182">estimasi perjalanan</text>
+          <text x="100" y="166">Trip</text><text class="sub" x="100" y="182">estimasi biaya</text>
         </a>
         <a class="node" data-k="umkm" href="https://umkm.wanderiq.web.id" style="--c:var(--c-umkm)">
           <circle class="halo" cx="400" cy="100" r="44"/><circle class="bg" cx="400" cy="100" r="44"/>
           <g class="ico" transform="translate(384 84) scale(1.35)"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v8h14v-8M10 20v-5h4v5"/></g>
-          <text x="400" y="166">UMKM</text><text class="sub" x="400" y="182">aplikasi usaha</text>
+          <text x="400" y="166">UMKM</text><text class="sub" x="400" y="182">menu &amp; pesanan</text>
         </a>
         <a class="node" data-k="tek" href="https://teknergi.wanderiq.web.id" style="--c:var(--c-tek)">
           <circle class="halo" cx="100" cy="400" r="44"/><circle class="bg" cx="100" cy="400" r="44"/>
@@ -323,75 +305,66 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 <section class="sol" id="solusi">
   <div class="wrap">
     <div class="sec-h">
-      <div>
-        <h2>Empat solusi, satu ekosistem</h2>
-        <p>Setiap solusi punya alamat sendiri. Klik kartu untuk langsung masuk.</p>
+      <h2>Empat solusi, satu ekosistem</h2>
+      <div class="who" id="untuk" role="group" aria-label="Saring menurut kebutuhan">
+        <span>Saya</span>
+        <button class="chip" type="button" id="f-trip" data-f="trip" aria-pressed="false" style="--c:var(--c-trip)">Traveler</button>
+        <button class="chip" type="button" id="f-umkm" data-f="umkm" aria-pressed="false" style="--c:var(--c-umkm)">Pelaku UMKM</button>
+        <button class="chip" type="button" id="f-tek" data-f="tek" aria-pressed="false" style="--c:var(--c-tek)">Mhs. Teknik Energi</button>
+        <button class="chip" type="button" id="f-volt" data-f="volt" aria-pressed="false" style="--c:var(--c-volt)">Mhs. Teknik Tenaga Listrik</button>
       </div>
-    </div>
-
-    <div class="who" id="untuk" role="group" aria-label="Saring menurut kebutuhan">
-      <span>Saya adalah</span>
-      <button class="chip" type="button" id="f-trip" data-f="trip" aria-pressed="false" style="--c:var(--c-trip)">Traveler</button>
-      <button class="chip" type="button" id="f-umkm" data-f="umkm" aria-pressed="false" style="--c:var(--c-umkm)">Pelaku UMKM</button>
-      <button class="chip" type="button" id="f-tek" data-f="tek" aria-pressed="false" style="--c:var(--c-tek)">Mahasiswa Teknik Energi</button>
-      <button class="chip" type="button" id="f-volt" data-f="volt" aria-pressed="false" style="--c:var(--c-volt)">Mahasiswa Teknik Tenaga Listrik</button>
     </div>
 
     <div class="grid" id="grid">
       <a class="card" data-k="trip" href="https://trip.wanderiq.web.id" style="--c:var(--c-trip);--i:0">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
-          <div><div class="tag">Perjalanan</div><h3 class="nm">WanderIQ Trip</h3></div>
           <span class="badge">Baru</span>
         </div>
-        <p class="ds">Estimasi perjalanan dari awal sampai pulang: visa, biaya, dan booking dalam satu aplikasi.</p>
-        <ul class="uses" aria-label="Keperluan"><li>Umrah</li><li>Liburan</li><li>Studi</li><li>Medis</li></ul>
-        <p class="for"><b>Untuk:</b> siapa pun yang merencanakan perjalanan</p>
+        <div><div class="tag">Perjalanan</div><h3 class="nm">WanderIQ Trip</h3></div>
+        <p class="ds">Estimasi biaya perjalanan sesuai keperluan, lengkap dengan penjelasan di setiap angka. Tampil dalam Rp, US$, € atau ¥.</p>
+        <ul class="uses"><li>Liburan</li><li>Bisnis</li><li>Studi</li><li>Medis</li><li>Umrah</li></ul>
+        <p class="for">Untuk traveler &amp; perencana perjalanan</p>
         <div class="c-foot">
-          <div class="price"><b>Gratis</b><small>langsung coba</small></div>
           <span class="go">trip.wanderiq.web.id<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
         </div>
       </a>
-
       <a class="card" data-k="umkm" href="https://umkm.wanderiq.web.id" style="--c:var(--c-umkm);--i:1">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9M3 9h18M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 12v8h14v-8M10 20v-5h4v5"/></svg></div>
-          <div><div class="tag">Bisnis</div><h3 class="nm">WanderIQ UMKM</h3></div>
+          
         </div>
-        <p class="ds">Aplikasi web untuk usaha mikro, kecil, dan menengah. Bantu kelola usaha harian supaya lebih rapi dan mudah dipantau.</p>
-        <ul class="uses" aria-label="Fitur"><li>Berbasis web</li><li>Tanpa instal</li><li>Untuk usaha kecil</li></ul>
-        <p class="for"><b>Untuk:</b> pemilik dan pengelola UMKM</p>
+        <div><div class="tag">Bisnis</div><h3 class="nm">WanderIQ UMKM</h3></div>
+        <p class="ds">Menu digital dan pemesanan online untuk usaha kuliner. Pelanggan pilih menu, cek total, lalu kirim pesanan.</p>
+        <ul class="uses"><li>Menu digital</li><li>Keranjang</li><li>Catatan pesanan</li></ul>
+        <p class="for">Untuk pelaku UMKM</p>
         <div class="c-foot">
-          <div class="price"><b>Kunjungi</b><small>lihat fitur lengkap</small></div>
           <span class="go">umkm.wanderiq.web.id<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
         </div>
       </a>
-
       <a class="card" data-k="tek" href="https://teknergi.wanderiq.web.id" style="--c:var(--c-tek);--i:2">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v12M8.5 21h7"/><g class="blades"><circle cx="12" cy="9" r="1.3"/><path d="M12 7.7C10.6 5.5 10.8 3 12 1.5c1.2 1.5 1.4 4 0 6.2"/><path d="M12 7.7C10.6 5.5 10.8 3 12 1.5c1.2 1.5 1.4 4 0 6.2" transform="rotate(120 12 9)"/><path d="M12 7.7C10.6 5.5 10.8 3 12 1.5c1.2 1.5 1.4 4 0 6.2" transform="rotate(240 12 9)"/></g></svg></div>
-          <div><div class="tag">Edukasi · Teknik Energi</div><h3 class="nm">Teknergi</h3></div>
+          
         </div>
-        <p class="ds">Simulasi edukasi untuk mahasiswa program studi Teknik Energi. Pahami cara kerja sistem energi lewat latihan interaktif.</p>
-        <ul class="uses" aria-label="Topik"><li>Simulasi</li><li>Sistem energi</li><li>Belajar mandiri</li></ul>
-        <p class="for"><b>Untuk:</b> mahasiswa Teknik Energi</p>
+        <div><div class="tag">Teknik Energi</div><h3 class="nm">Teknergi</h3></div>
+        <p class="ds">Belajar Teknik Energi lewat simulasi industri, kalkulator berbasis standar, alur proses bisnis, dan kuis.</p>
+        <ul class="uses"><li>Simulasi</li><li>Kalkulator</li><li>Kuis</li><li>Laporan progres</li></ul>
+        <p class="for">Untuk mahasiswa Teknik Energi</p>
         <div class="c-foot">
-          <div class="price"><b>Kunjungi</b><small>mulai simulasi</small></div>
           <span class="go">teknergi.wanderiq.web.id<i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
         </div>
       </a>
-
       <a class="card" data-k="volt" href="https://voltaz.wanderiq.web.id" style="--c:var(--c-volt);--i:3">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <div><div class="tag">Edukasi · Teknik Tenaga Listrik</div><h3 class="nm">Volta-Z</h3></div>
           <span class="badge">Tersedia</span>
         </div>
-        <p class="ds">Simulasi industri kelistrikan. Hitung biaya listrik rumah dan industri, telusuri kebutuhan energi dan alur bisnis, lalu uji pemahaman lewat kuis.</p>
-        <ul class="uses" aria-label="Topik"><li>Biaya listrik</li><li>Kebutuhan energi</li><li>Alur bisnis</li><li>Kuis</li></ul>
-        <p class="for"><b>Untuk:</b> umum &amp; mahasiswa Teknik Tenaga Listrik</p>
+        <div><div class="tag">Teknik Tenaga Listrik</div><h3 class="nm">Volta-Z</h3></div>
+        <p class="ds">Simulasi industri kelistrikan. Hitung biaya listrik, telusuri kebutuhan energi dan alur bisnis, lalu uji pemahaman lewat kuis.</p>
+        <ul class="uses"><li>Biaya listrik</li><li>Kebutuhan energi</li><li>Alur bisnis</li><li>Kuis</li></ul>
+        <p class="for">Untuk mahasiswa Teknik Tenaga Listrik</p>
         <div class="c-foot">
-          <div class="price"><b>Rp89.000</b><small>sekali bayar · coba gratis 5 hari</small></div>
           <p class="sts" id="sts" hidden>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-label="Pengguna"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/></svg><b id="su">–</b></span>
             <span><svg viewBox="0 0 24 24" fill="#ffc933" aria-label="Rating"><path d="m12 2.8 2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></svg><b id="sr">–</b></span>
@@ -402,43 +375,12 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
     </div>
   </div>
 </section>
-
-<section class="band" id="kontak">
-  <div class="wrap">
-    <div class="band-in">
-      <svg class="fig" viewBox="0 0 160 172" aria-hidden="true">
-        <g class="f-body">
-          <rect x="14" y="98" width="26" height="62" rx="11" fill="url(#gt)"/>
-          <g class="f-arm"><rect x="120" y="98" width="26" height="62" rx="11" fill="url(#gt)"/><path d="M123 150h20v9a10 10 0 0 1-20 0z" fill="url(#gy)"/></g>
-          <path d="M17 150h20v9a10 10 0 0 1-20 0z" fill="url(#gy)"/>
-          <path d="M42 92h76l8 76H34z" fill="url(#gt)"/><path d="M66 92l14 16 14-16z" fill="#eefbf9" opacity=".9"/>
-          <rect x="66" y="82" width="28" height="14" rx="3" fill="#d6a700"/>
-          <rect x="46" y="30" width="68" height="60" rx="20" fill="url(#gy)"/>
-          <g class="f-eyes"><circle cx="64" cy="66" r="4.6" fill="#1a1a1a"/><circle cx="96" cy="66" r="4.6" fill="#1a1a1a"/></g>
-          <path d="M62 76q18 15 36 0" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
-          <path d="M42 52C40 24 58 10 80 10s40 14 38 42c-4-10-12-17-22-19-10 3-26 3-36 0-10 2-16 9-18 19z" fill="url(#gh)"/>
-        </g>
-      </svg>
-      <div>
-        <h3>Butuh bantuan memilih solusi?</h3>
-        <p>Tanya kami lewat WhatsApp 0851-8307-7199 atau email admin.wanderiq@gmail.com.</p>
-      </div>
-      <div class="acts">
-        <a class="btn wa" href="https://wa.me/6285183077199">WhatsApp</a>
-        <a class="btn sec" href="mailto:admin.wanderiq@gmail.com">Email</a>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer class="ft">
   <div class="wrap">
     <a href="/privasi.html">Kebijakan Privasi</a>
     <a href="/syarat.html">Syarat &amp; Ketentuan</a>
-    <a href="/refund.html">Pengembalian Dana</a>
-    <a href="mailto:admin.wanderiq@gmail.com">admin.wanderiq@gmail.com</a>
-    <span>0851-8307-7199</span>
     <span>© 2026 WanderIQ_Hub</span>
   </div>
 </footer>
