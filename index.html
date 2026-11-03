@@ -170,8 +170,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .card:hover .ic svg .blades{animation:spin 1.6s linear infinite}
 .tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--c)}
 .nm{font-family:var(--f-display);font-weight:700;font-size:19px;letter-spacing:-.025em;line-height:1.2;margin:3px 0 0}
-.badge{font-size:10.5px;font-weight:700;letter-spacing:.03em;padding:3px 9px;border-radius:999px;
-  color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent)}
 .ds{margin:0;color:#bccde3;font-size:14px;line-height:1.5}
 .for{margin:0;font-size:12.5px;color:var(--dim)}
 .c-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -208,13 +206,8 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .fx-p{display:grid;grid-template-columns:repeat(var(--n,4),1fr);gap:4px;margin:0 -2px}
 .fx-p i{display:block;padding:5px 2px;cursor:default}
 .fx-p i s{display:block;position:relative;height:3px;border-radius:2px;overflow:hidden;background:rgba(255,255,255,.1)}
-.fx-p i s::after{content:"";position:absolute;inset:0;background:var(--c);transform:scaleX(0);transform-origin:left}
-.fx-p i.done s::after{transform:scaleX(1);opacity:.55}
-.fx-p i.on s::after{animation:fill var(--fx-t,4.2s) linear forwards}
-.card:hover .fx-p i.on s::after,.card:focus-visible .fx-p i.on s::after,.fx.idle .fx-p i.on s::after{animation-play-state:paused}
-.fx.all .fx-s{gap:10px}
-.fx.all .fx-s li{grid-area:auto;opacity:1;transform:none;filter:none}
-@keyframes fill{to{transform:scaleX(1)}}
+.fx-p i s b{position:absolute;inset:0;background:var(--c);transform:scaleX(0);transform-origin:left}
+.fx-p i.done s b{transform:scaleX(1);opacity:.55}
 @keyframes pop{0%{transform:scale(.6) rotate(-12deg)}100%{transform:none}}
 @keyframes live{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 70%,transparent)}100%{box-shadow:0 0 0 7px transparent}}
 
@@ -224,6 +217,7 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
+  .fx-s li{transition:opacity .5s!important;transform:none!important;filter:none!important}
 }
 </style>
 </head>
@@ -333,7 +327,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
       <a class="card" data-k="trip" href="https://trip.wanderiq.web.id" style="--c:var(--c-trip);--i:0">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
-          <span class="badge">Baru</span>
         </div>
         <div><div class="tag">Perjalanan</div><h3 class="nm">WanderIQ Trip</h3></div>
         <p class="ds">Estimasi biaya perjalanan sesuai keperluan, lengkap dengan penjelasan di setiap angka. Tampil dalam Rp, US$, € atau ¥.</p>
@@ -408,7 +401,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
       <a class="card" data-k="volt" href="https://voltaz.wanderiq.web.id" style="--c:var(--c-volt);--i:3">
         <div class="c-top">
           <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <span class="badge">Tersedia</span>
         </div>
         <div><div class="tag">Teknik Tenaga Listrik</div><h3 class="nm">Volta-Z</h3></div>
         <p class="ds">Simulasi industri kelistrikan. Hitung biaya listrik, telusuri kebutuhan energi dan alur bisnis, lalu uji pemahaman lewat kuis.</p>
@@ -441,6 +433,6 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
   </div>
 </footer>
 
-<script src="/main.js" defer></script>
+<script src="/main.js?v=2" defer></script>
 </body>
 </html>
