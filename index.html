@@ -184,9 +184,9 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .card:hover .go{color:var(--fg)}
 
 /* Dynamic feature showcase: pure CSS rotation (no JS needed). 4 features x 4.2s = 16.8s cycle.
-   --j = feature index, --i = card index (staggers the cards). Pauses on hover.
+   --j = feature index. Mini-demo loops use multiples of 4.2s so they restart as each feature appears. Pauses on hover.
    Animations use !important so they still run when the device asks for reduced motion. */
-.fx{--fx:16.8s;--off:calc(var(--i,0)*-.7s);position:relative;display:flex;flex-direction:column;gap:9px;padding:10px 12px 6px;border-radius:13px;
+.fx{--fx:16.8s;--off:0s;position:relative;display:flex;flex-direction:column;gap:9px;padding:10px 12px 6px;border-radius:13px;
   background:rgba(4,16,34,.5);border:1px solid color-mix(in srgb,var(--c) 22%,var(--line))}
 .fx-h{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .fx-l{display:inline-flex;align-items:center;gap:7px}
@@ -211,6 +211,111 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
 .fx-p s:nth-child(3) b{animation-name:fb2!important}
 .fx-p s:nth-child(4) b{animation-name:fb3!important}
 .card:hover .fx *,.card:focus-visible .fx *{animation-play-state:paused!important}
+/* Mini demos: one small looping illustration per feature (pure CSS) */
+.fx-s{grid-template-columns:minmax(0,1fr)}
+.fx-s li{flex-wrap:wrap;min-width:0}
+.fx-s li .fx-t{flex:1 1 0}
+.v{flex-basis:100%;width:100%;min-width:0;height:46px;margin-top:2px;border-radius:10px;background:rgba(255,255,255,.035);border:1px dashed color-mix(in srgb,var(--c) 26%,transparent);
+  position:relative;overflow:hidden;display:flex;align-items:center;gap:6px;padding:0 10px;font:600 11px var(--f-body);color:var(--fg)}
+.fx .v *{animation-iteration-count:infinite!important}
+.v svg{fill:none;stroke:var(--c);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* chips */
+.v-chips{flex-wrap:wrap;align-content:center;gap:4px}
+.v-chips em{font-style:normal;padding:2px 7px;border-radius:999px;font-size:10.5px;background:color-mix(in srgb,var(--c) 18%,transparent);color:var(--c);
+  animation:vpop 4.2s ease both!important;animation-delay:calc(var(--d)*.35s)!important}
+@keyframes vpop{0%{opacity:0;transform:scale(.4)}12%,85%{opacity:1;transform:none}100%{opacity:0}}
+/* rows */
+.v-rows{flex-direction:column;align-items:stretch;justify-content:center;gap:3px}
+.v-rows em{display:flex;align-items:center;gap:6px;font-style:normal;font-size:10px;color:var(--mute);animation:vslide 4.2s ease both!important;animation-delay:calc(var(--d)*.3s)!important}
+.v-rows em i{width:8px;height:8px;border-radius:2px;background:var(--c);flex:none}
+.v-rows em span{width:62px;flex:none;white-space:nowrap;overflow:hidden}
+.v-rows em u{height:4px;border-radius:2px;background:color-mix(in srgb,var(--c) 60%,transparent);width:var(--w);animation:vgrow 4.2s ease both!important;animation-delay:calc(var(--d)*.3s + .2s)!important}
+@keyframes vslide{0%{opacity:0;transform:translateX(-14px)}12%,88%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes vgrow{0%{width:0}25%,100%{width:var(--w)}}
+/* bars */
+.v-bars{align-items:flex-end;gap:5px;padding-bottom:6px}
+.v-bars i{flex:1;height:var(--h);border-radius:3px 3px 1px 1px;background:linear-gradient(to top,color-mix(in srgb,var(--c) 45%,transparent),var(--c));
+  transform-origin:bottom;animation:vbar 2.1s ease-in-out alternate both!important;animation-delay:calc(var(--d)*.12s)!important}
+@keyframes vbar{0%{transform:scaleY(.15)}100%{transform:scaleY(1)}}
+/* total sum */
+.v-sum-l{display:flex;flex-direction:column;gap:4px;flex:1}
+.v-sum-l i{height:4px;border-radius:2px;background:color-mix(in srgb,var(--c) 55%,transparent);animation:vfill 4.2s ease both!important;animation-delay:calc(var(--d)*.35s)!important}
+.v-sum-l i:nth-child(2){width:70%}.v-sum-l i:nth-child(3){width:45%}
+.v-sum b{font:700 10px var(--f-mono);color:var(--c);animation:vpop 4.2s ease both!important;animation-delay:1.2s!important}
+.v-sum s{width:34px;height:8px;border-radius:3px;background:var(--c);animation:vpop 4.2s ease both!important;animation-delay:1.3s!important}
+@keyframes vfill{0%{transform:scaleX(0);transform-origin:left}25%,100%{transform:scaleX(1);transform-origin:left}}
+/* currency ticker */
+.v-tick-r{height:22px;overflow:hidden;display:block;width:40px;flex:none}
+.v-tick-r b{display:block;height:22px;line-height:22px;font:700 16px var(--f-mono);color:var(--c);animation:vtick 4.2s cubic-bezier(.7,0,.3,1) both!important}
+@keyframes vtick{0%,18%{transform:translateY(0)}25%,43%{transform:translateY(-22px)}50%,68%{transform:translateY(-44px)}75%,93%{transform:translateY(-66px)}100%{transform:translateY(-88px)}}
+.v-tick-x{display:flex;flex:1;gap:4px}
+.v-tick-x i{flex:1;height:6px;border-radius:3px;background:color-mix(in srgb,var(--c) 30%,transparent);animation:vshim 1.05s ease-in-out alternate both!important}
+.v-tick-x i:nth-child(2){animation-delay:.2s!important}.v-tick-x i:nth-child(3){animation-delay:.4s!important}
+@keyframes vshim{to{background:var(--c)}}
+/* cart */
+.v-cart-ic{position:relative;width:26px;height:26px;flex:none}
+.v-cart-ic svg{width:26px;height:26px}
+.v-cart-ic b{position:absolute;top:-5px;right:-7px;width:15px;height:15px;border-radius:50%;background:var(--c);color:#081a30;font:700 9px/15px var(--f-mono);text-align:center;display:grid}
+.v-cart-ic b span{grid-area:1/1;opacity:0;animation:vnum 4.2s steps(1) both!important}
+.v-cart-ic b span:nth-child(1){animation-name:vn1!important}.v-cart-ic b span:nth-child(2){animation-name:vn2!important}.v-cart-ic b span:nth-child(3){animation-name:vn3!important}
+@keyframes vn1{0%{opacity:0}20%{opacity:1}45%,100%{opacity:0}}
+@keyframes vn2{0%,45%{opacity:0}46%{opacity:1}70%,100%{opacity:0}}
+@keyframes vn3{0%,70%{opacity:0}71%,100%{opacity:1}}
+.v-cart-drop{display:flex;gap:5px}
+.v-cart-drop i{width:12px;height:12px;border-radius:4px;background:var(--c);opacity:0;animation:vdrop 4.2s ease both!important}
+.v-cart-drop i:nth-child(1){animation-delay:.2s!important}.v-cart-drop i:nth-child(2){animation-delay:1.25s!important}.v-cart-drop i:nth-child(3){animation-delay:2.3s!important}
+@keyframes vdrop{0%{opacity:0;transform:translateY(-16px)}8%,90%{opacity:1;transform:none}100%{opacity:0}}
+.v-cart s{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--c),transparent);transform-origin:left;animation:vfill2 4.2s ease both!important}
+@keyframes vfill2{0%,10%{transform:scaleX(.1)}35%{transform:scaleX(.4)}60%{transform:scaleX(.7)}85%,100%{transform:scaleX(1)}}
+/* typing note */
+.v-type span{font:500 11px var(--f-mono);color:var(--fg);white-space:nowrap;overflow:hidden;border-right:2px solid var(--c);width:23ch;max-width:100%;animation:vtype 4.2s steps(23) both,vcaret .5s step-end alternate!important}
+@keyframes vtype{0%{width:0}60%,100%{width:23ch}}
+@keyframes vcaret{50%{border-color:transparent}}
+/* send */
+.v-send i{position:absolute;left:12px;right:30px;top:50%;height:0;border-top:2px dashed color-mix(in srgb,var(--c) 40%,transparent)}
+.v-send svg{position:absolute;left:8px;top:50%;width:18px;height:18px;margin-top:-9px;animation:vfly 2.1s ease-in both!important}
+.v-send b{position:absolute;right:8px;width:20px;height:20px;border-radius:50%;background:var(--c);color:#081a30;font-size:11px;display:grid;place-items:center;animation:vland 2.1s ease both!important}
+@keyframes vfly{0%{transform:translateX(0);opacity:1}80%{transform:translateX(calc(100cqw - 60px));opacity:1}85%,100%{opacity:0}}
+@keyframes vland{0%,78%{transform:scale(0)}88%{transform:scale(1.25)}100%{transform:scale(1)}}
+.v-send{container-type:inline-size}
+/* wave */
+.v-wave{padding:0}
+.v-wave svg{flex:none;width:200%;height:100%;stroke-width:2.2;animation:vwave 2.2s linear both!important}
+@keyframes vwave{to{transform:translateX(-50%)}}
+/* calc keypad */
+.v-calc-k{display:grid;grid-template-columns:repeat(3,10px);gap:3px}
+.v-calc-k i{height:8px;border-radius:2px;background:color-mix(in srgb,var(--c) 25%,transparent);animation:vkey 2.1s ease both!important}
+.v-calc-k i:nth-child(2){animation-delay:.3s!important}.v-calc-k i:nth-child(6){animation-delay:.6s!important}.v-calc-k i:nth-child(4){animation-delay:.9s!important}
+@keyframes vkey{0%,20%{background:color-mix(in srgb,var(--c) 25%,transparent)}10%{background:var(--c)}}
+.v-calc b{margin-left:auto;font:700 13px var(--f-mono);color:var(--c);animation:vpop 2.1s ease both!important;animation-delay:.9s!important}
+/* flow */
+.v-flow{justify-content:space-between;gap:4px;padding:0 8px}
+.v-flow em{font-style:normal;font-size:9.5px;padding:3px 6px;border-radius:6px;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);white-space:nowrap;animation:vlit 4.2s ease both!important}
+.v-flow em:nth-of-type(2){animation-delay:1.4s!important}.v-flow em:nth-of-type(3){animation-delay:2.8s!important}
+.v-flow i{flex:1;min-width:8px;height:2px;background:linear-gradient(90deg,var(--c) 0 30%,color-mix(in srgb,var(--c) 25%,transparent) 30%);background-size:300% 100%;animation:vpipe 1.4s linear both!important}
+@keyframes vlit{0%,33%{background:color-mix(in srgb,var(--c) 35%,transparent);color:var(--fg)}40%,100%{background:transparent;color:var(--mute)}}
+@keyframes vpipe{from{background-position:100% 0}to{background-position:-50% 0}}
+/* progress */
+.v-prog s{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;display:block}
+.v-prog u{display:block;height:100%;border-radius:4px;background:var(--c);transform-origin:left;animation:vfill2 4.2s ease both!important}
+.v-prog-q{display:flex;gap:3px}
+.v-prog-q i,.v-quiz i{font-style:normal;width:16px;height:16px;border-radius:5px;display:grid;place-items:center;font-size:10px;background:var(--c);color:#081a30;animation:vpop 4.2s ease both!important}
+.v-prog-q i:nth-child(1){animation-delay:.4s!important}.v-prog-q i:nth-child(2){animation-delay:1.45s!important}.v-prog-q i:nth-child(3){animation-delay:2.5s!important}
+/* quiz */
+.v-quiz{flex-direction:column;align-items:stretch;justify-content:center;gap:3px}
+.v-quiz em{display:flex;align-items:center;gap:6px}
+.v-quiz em::after{content:"";flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.12)}
+.v-quiz i{width:11px;height:11px;font-size:8px;border-radius:3px;animation-delay:calc(var(--d)*.6s)!important}
+/* gauge */
+.v-gauge svg{width:60px;height:34px;flex:none}
+.v-gauge .tr{stroke:rgba(255,255,255,.1);stroke-width:4}
+.v-gauge .ar{stroke-width:4;stroke-dasharray:76;stroke-dashoffset:76;animation:varc 2.1s ease-in-out alternate both!important}
+.v-gauge .nd{stroke:var(--fg);transform-origin:30px 30px;animation:vneedle 2.1s ease-in-out alternate both!important}
+.v-gauge circle{fill:var(--fg);stroke:none}
+.v-gauge b{font:700 12px var(--f-mono);color:var(--c)}
+@keyframes varc{to{stroke-dashoffset:10}}
+@keyframes vneedle{0%{transform:rotate(-80deg)}100%{transform:rotate(70deg)}}
+.card:hover .v *{animation-play-state:running!important}
 @keyframes fxin{0%{opacity:0;transform:translateY(12px)}3%,22%{opacity:1;transform:none}25%,100%{opacity:0;transform:translateY(-12px)}}
 @keyframes fxnum{0%{opacity:0}1%,24%{opacity:1}25%,100%{opacity:0}}
 @keyframes fb0{0%{transform:scaleX(0)}25%,99.5%{transform:scaleX(1)}100%{transform:scaleX(0)}}
@@ -340,10 +445,10 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <div class="fx" role="group" aria-label="Fitur unggulan WanderIQ Trip">
           <div class="fx-h"><span class="fx-l">Fitur unggulan</span><span class="fx-n" aria-hidden="true"><span style="--j:0"><b>01</b>/04</span><span style="--j:1"><b>02</b>/04</span><span style="--j:2"><b>03</b>/04</span><span style="--j:3"><b>04</b>/04</span></span></div>
           <ul class="fx-s">
-            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v3M8.5 18h3.5"/></svg></span><span class="fx-t"><b>Estimasi biaya lengkap</b><small>Rincian biaya perjalanan dalam satu hitungan</small></span></li>
-            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg></span><span class="fx-t"><b>Penjelasan di setiap angka</b><small>Tahu asal setiap komponen biaya</small></span></li>
-            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="fx-t"><b>Empat mata uang</b><small>Tampil dalam Rp, US$, € atau ¥</small></span></li>
-            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></span><span class="fx-t"><b>Sesuai keperluan</b><small>Liburan, bisnis, studi, medis, umrah</small></span></li>
+            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v3M8.5 18h3.5"/></svg></span><span class="fx-t"><b>Estimasi biaya lengkap</b><small>Rincian biaya perjalanan dalam satu hitungan</small></span><span class="v v-sum"><span class="v-sum-l"><i style="--d:0"></i><i style="--d:1"></i><i style="--d:2"></i></span><b>Total</b><s></s></span></li>
+            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5h.01"/></svg></span><span class="fx-t"><b>Penjelasan di setiap angka</b><small>Tahu asal setiap komponen biaya</small></span><span class="v v-rows"><em style="--d:0"><i></i><span>Tiket</span><u style="--w:70%"></u></em><em style="--d:1"><i></i><span>Hotel</span><u style="--w:52%"></u></em><em style="--d:2"><i></i><span>Visa</span><u style="--w:30%"></u></em></span></li>
+            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="fx-t"><b>Empat mata uang</b><small>Tampil dalam Rp, US$, € atau ¥</small></span><span class="v v-tick"><span class="v-tick-r"><b>Rp</b><b>US$</b><b>€</b><b>¥</b><b>Rp</b></span><span class="v-tick-x"><i></i><i></i><i></i></span></span></li>
+            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></span><span class="fx-t"><b>Sesuai keperluan</b><small>Liburan, bisnis, studi, medis, umrah</small></span><span class="v v-chips"><em style="--d:0">Liburan</em><em style="--d:1">Bisnis</em><em style="--d:2">Studi</em><em style="--d:3">Medis</em><em style="--d:4">Umrah</em></span></li>
           </ul>
           <div class="fx-p" aria-hidden="true"><s><b></b></s><s><b></b></s><s><b></b></s><s><b></b></s></div>
         </div>
@@ -366,10 +471,10 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <div class="fx" role="group" aria-label="Fitur unggulan WanderIQ UMKM">
           <div class="fx-h"><span class="fx-l">Fitur unggulan</span><span class="fx-n" aria-hidden="true"><span style="--j:0"><b>01</b>/04</span><span style="--j:1"><b>02</b>/04</span><span style="--j:2"><b>03</b>/04</span><span style="--j:3"><b>04</b>/04</span></span></div>
           <ul class="fx-s">
-            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><span class="fx-t"><b>Menu digital</b><small>Pelanggan lihat menu langsung dari ponsel</small></span></li>
-            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.4 11h11l2-8H6.2"/></svg></span><span class="fx-t"><b>Keranjang otomatis</b><small>Total belanja dihitung saat memilih menu</small></span></li>
-            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></svg></span><span class="fx-t"><b>Catatan pesanan</b><small>Permintaan khusus tercatat di tiap pesanan</small></span></li>
-            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7z"/><path d="M10 13 21 3"/></svg></span><span class="fx-t"><b>Pesan online</b><small>Pesanan dikirim tanpa antre di kasir</small></span></li>
+            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><span class="fx-t"><b>Menu digital</b><small>Pelanggan lihat menu langsung dari ponsel</small></span><span class="v v-rows"><em style="--d:0"><i></i><span>Nasi goreng</span><u style="--w:60%"></u></em><em style="--d:1"><i></i><span>Mie ayam</span><u style="--w:45%"></u></em><em style="--d:2"><i></i><span>Es teh</span><u style="--w:30%"></u></em></span></li>
+            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.4 11h11l2-8H6.2"/></svg></span><span class="fx-t"><b>Keranjang otomatis</b><small>Total belanja dihitung saat memilih menu</small></span><span class="v v-cart"><span class="v-cart-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.4 11h11l2-8H6.2"/></svg><b><span>1</span><span>2</span><span>3</span></b></span><span class="v-cart-drop"><i style="--d:0"></i><i style="--d:1"></i><i style="--d:2"></i></span><s></s></span></li>
+            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13 7 4 4"/></svg></span><span class="fx-t"><b>Catatan pesanan</b><small>Permintaan khusus tercatat di tiap pesanan</small></span><span class="v v-type"><span>Pedas level 2, tanpa es</span></span></li>
+            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10l7 3 3 7z"/><path d="M10 13 21 3"/></svg></span><span class="fx-t"><b>Pesan online</b><small>Pesanan dikirim tanpa antre di kasir</small></span><span class="v v-send"><i></i><svg viewBox="0 0 24 24"><path d="M21 3 3 10l7 3 3 7z"/><path d="M10 13 21 3"/></svg><b>✓</b></span></li>
           </ul>
           <div class="fx-p" aria-hidden="true"><s><b></b></s><s><b></b></s><s><b></b></s><s><b></b></s></div>
         </div>
@@ -392,10 +497,10 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <div class="fx" role="group" aria-label="Fitur unggulan Teknergi">
           <div class="fx-h"><span class="fx-l">Fitur unggulan</span><span class="fx-n" aria-hidden="true"><span style="--j:0"><b>01</b>/04</span><span style="--j:1"><b>02</b>/04</span><span style="--j:2"><b>03</b>/04</span><span style="--j:3"><b>04</b>/04</span></span></div>
           <ul class="fx-s">
-            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l6 4v-4l6 4V5h6v16z"/><path d="M7 18h2M13 18h2M17 18h1"/></svg></span><span class="fx-t"><b>Simulasi industri</b><small>Praktik kasus energi seperti di lapangan</small></span></li>
-            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v3M8.5 18h3.5"/></svg></span><span class="fx-t"><b>Kalkulator berbasis standar</b><small>Hitungan teknik mengacu standar</small></span></li>
-            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="7" height="6" rx="1.6"/><rect x="14" y="14.5" width="7" height="6" rx="1.6"/><path d="M6.5 9.5v4a3 3 0 0 0 3 3H14"/></svg></span><span class="fx-t"><b>Alur proses bisnis</b><small>Pahami rantai proses dari hulu ke hilir</small></span></li>
-            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><span class="fx-t"><b>Kuis & laporan progres</b><small>Ukur pemahaman dan pantau kemajuan</small></span></li>
+            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l6 4v-4l6 4V5h6v16z"/><path d="M7 18h2M13 18h2M17 18h1"/></svg></span><span class="fx-t"><b>Simulasi industri</b><small>Praktik kasus energi seperti di lapangan</small></span><span class="v v-wave"><svg viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0 20 Q12.5 4 25 20 T50 20 T75 20 T100 20 T125 20 T150 20 T175 20 T200 20 T225 20 T250 20"/></svg></span></li>
+            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7h7M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01M8.5 15h.01M12 15h.01M15.5 15v3M8.5 18h3.5"/></svg></span><span class="fx-t"><b>Kalkulator berbasis standar</b><small>Hitungan teknik mengacu standar</small></span><span class="v v-calc"><span class="v-calc-k"><i></i><i></i><i></i><i></i><i></i><i></i></span><b>= OK</b></span></li>
+            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="7" height="6" rx="1.6"/><rect x="14" y="14.5" width="7" height="6" rx="1.6"/><path d="M6.5 9.5v4a3 3 0 0 0 3 3H14"/></svg></span><span class="fx-t"><b>Alur proses bisnis</b><small>Pahami rantai proses dari hulu ke hilir</small></span><span class="v v-flow"><em>Hulu</em><i></i><em>Proses</em><i></i><em>Hilir</em></span></li>
+            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V4M4 20h16"/><path d="m7 15 4-4 3 3 5-6"/></svg></span><span class="fx-t"><b>Kuis &amp; laporan progres</b><small>Ukur pemahaman dan pantau kemajuan</small></span><span class="v v-prog"><s><u></u></s><span class="v-prog-q"><i style="--d:0">✓</i><i style="--d:1">✓</i><i style="--d:2">✓</i></span></span></li>
           </ul>
           <div class="fx-p" aria-hidden="true"><s><b></b></s><s><b></b></s><s><b></b></s><s><b></b></s></div>
         </div>
@@ -417,10 +522,10 @@ h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.6vw,64px)
         <div class="fx" role="group" aria-label="Fitur unggulan Volta-Z">
           <div class="fx-h"><span class="fx-l">Fitur unggulan</span><span class="fx-n" aria-hidden="true"><span style="--j:0"><b>01</b>/04</span><span style="--j:1"><b>02</b>/04</span><span style="--j:2"><b>03</b>/04</span><span style="--j:3"><b>04</b>/04</span></span></div>
           <ul class="fx-s">
-            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-5"/><circle cx="12" cy="17" r="1.2"/></svg></span><span class="fx-t"><b>Hitung biaya listrik</b><small>Simulasi tagihan dari pemakaian energi</small></span></li>
-            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 17v-5M11 17V6M16 17v-8M20 17v-3"/></svg></span><span class="fx-t"><b>Kebutuhan energi</b><small>Telusuri beban dan kebutuhan daya</small></span></li>
-            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="7" height="6" rx="1.6"/><rect x="14" y="14.5" width="7" height="6" rx="1.6"/><path d="M6.5 9.5v4a3 3 0 0 0 3 3H14"/></svg></span><span class="fx-t"><b>Alur bisnis kelistrikan</b><small>Ikuti proses industri listrik tahap demi tahap</small></span></li>
-            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8 12.5 3 3 5-6"/></svg></span><span class="fx-t"><b>Kuis pemahaman</b><small>Uji hasil belajar setelah simulasi</small></span></li>
+            <li style="--j:0"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="m12 17 4-5"/><circle cx="12" cy="17" r="1.2"/></svg></span><span class="fx-t"><b>Hitung biaya listrik</b><small>Simulasi tagihan dari pemakaian energi</small></span><span class="v v-gauge"><svg viewBox="0 0 60 34"><path class="tr" d="M6 30a24 24 0 0 1 48 0"/><path class="ar" d="M6 30a24 24 0 0 1 48 0"/><path class="nd" d="M30 30 30 12"/><circle cx="30" cy="30" r="2.6"/></svg><b>kWh</b></span></li>
+            <li style="--j:1"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6 17v-5M11 17V6M16 17v-8M20 17v-3"/></svg></span><span class="fx-t"><b>Kebutuhan energi</b><small>Telusuri beban dan kebutuhan daya</small></span><span class="v v-bars"><i style="--h:40%;--d:0"></i><i style="--h:65%;--d:1"></i><i style="--h:50%;--d:2"></i><i style="--h:85%;--d:3"></i><i style="--h:60%;--d:4"></i><i style="--h:95%;--d:5"></i><i style="--h:70%;--d:6"></i></span></li>
+            <li style="--j:2"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="7" height="6" rx="1.6"/><rect x="14" y="14.5" width="7" height="6" rx="1.6"/><path d="M6.5 9.5v4a3 3 0 0 0 3 3H14"/></svg></span><span class="fx-t"><b>Alur bisnis kelistrikan</b><small>Ikuti proses industri listrik tahap demi tahap</small></span><span class="v v-flow"><em>Pembangkit</em><i></i><em>Gardu</em><i></i><em>Beban</em></span></li>
+            <li style="--j:3"><span class="fx-i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8 12.5 3 3 5-6"/></svg></span><span class="fx-t"><b>Kuis pemahaman</b><small>Uji hasil belajar setelah simulasi</small></span><span class="v v-quiz"><em style="--d:0"><i>✓</i></em><em style="--d:1"><i>✓</i></em><em style="--d:2"><i>✓</i></em></span></li>
           </ul>
           <div class="fx-p" aria-hidden="true"><s><b></b></s><s><b></b></s><s><b></b></s><s><b></b></s></div>
         </div>
