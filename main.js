@@ -28,6 +28,34 @@
       if(m.getBoundingClientRect().top>window.innerHeight-120||m.getBoundingClientRect().bottom<0)m.scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"});}
   })});
 
+  /* Feature showcase per card: rotates highlights. The segment timer drives the rotation
+     (animationend), so CSS pauses on hover/offscreen also pause the rotation.
+     Hovering a segment jumps to that feature. Reduced motion shows all features as a list. */
+  var pad=function(v){return(v<10?"0":"")+v};
+  var io="IntersectionObserver" in window?new IntersectionObserver(function(es){
+    es.forEach(function(e){e.target.classList.toggle("idle",!e.isIntersecting)})},{threshold:.35}):null;
+  document.querySelectorAll(".fx").forEach(function(fx,ci){
+    var items=fx.querySelectorAll(".fx-s li"),cnt=fx.querySelector(".fx-n"),N=items.length;
+    if(N<2)return;
+    if(reduce){fx.classList.add("all");return}
+    var bar=document.createElement("div");bar.className="fx-p";bar.setAttribute("aria-hidden","true");bar.style.setProperty("--n",N);
+    var segs=[];for(var j=0;j<N;j++){var sg=document.createElement("i");sg.appendChild(document.createElement("s"));bar.appendChild(sg);segs.push(sg)}
+    fx.appendChild(bar);
+    var at=-1;
+    function go(i){if(i===at)return;var prev=at;at=i;
+      items.forEach(function(li,j){li.classList.toggle("on",j===i);li.classList.toggle("out",j===prev)});
+      segs.forEach(function(sg,j){sg.classList.remove("on");sg.classList.toggle("done",j<i)});
+      void segs[i].offsetWidth;segs[i].classList.add("on");
+      cnt.innerHTML="<b>"+pad(i+1)+"</b>/"+pad(N);}
+    go(0);
+    segs[0].firstChild.style.animationDelay=(ci*.6)+"s";   /* stagger cards */
+    bar.addEventListener("animationend",function(e){
+      if(e.animationName!=="fill")return;e.target.style.animationDelay="";
+      if(e.target.parentNode===segs[at])go((at+1)%N)});
+    segs.forEach(function(sg,j){sg.addEventListener("pointerenter",function(e){if(e.pointerType==="mouse"){segs[at].firstChild.style.animationDelay="";go(j)}})});
+    if(io)io.observe(fx);
+  });
+
   /* Public stats per app. Each card shows users and rating once the API returns that app's key
      (keys: "trip", "umkm", "teknergi", "volta-z"). Cards without data stay clean. */
   var STATS_URL="https://listrik-budget-api.admin-wanderiq.workers.dev/api/public/stats";
